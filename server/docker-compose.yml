@@ -11,6 +11,8 @@ services:
       SELECTOR: .ten-day-frame
       REFRESH_MINUTES: "30"
       ROTATE: "0"         # 90 = rotate graph to fill portrait screen
+      CHALLENGE_TIMEOUT_SECONDS: "180"   # max wait for Akamai bot check redirect
+      ATTEMPTS: "3"
       TZ: Europe/Berlin
     volumes:
       - ./data:/data
