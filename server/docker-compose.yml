@@ -1,5 +1,6 @@
 services:
   weather-kindle:
+    image: ghcr.io/kh3dr0n/weather-kindle:latest
     build: .
     container_name: weather-kindle
     restart: unless-stopped
@@ -9,7 +10,7 @@ services:
       WU_URL: https://www.wunderground.com/forecast/de/munich
       SELECTOR: .ten-day-frame
       REFRESH_MINUTES: "30"
-      ROTATE: "90"        # 0 = keep landscape graph unrotated
+      ROTATE: "0"         # 90 = rotate graph to fill portrait screen
       TZ: Europe/Berlin
     volumes:
       - ./data:/data

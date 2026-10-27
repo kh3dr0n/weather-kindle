@@ -5,9 +5,13 @@ jailbroken Kindle (11th gen 2024, FW 5.18.3), refreshed every 30 minutes.
 
 ## Server (home server, Docker)
 
+A prebuilt image (amd64 + arm64) is published to
+`ghcr.io/kh3dr0n/weather-kindle:latest` by GitHub Actions on every push to `main`.
+
 ```sh
 cd server
-docker compose up -d --build
+docker compose pull && docker compose up -d   # use the prebuilt image
+# or: docker compose up -d --build            # build locally
 curl -s http://localhost:8080/health       # last render status
 open  http://localhost:8080/weather.png    # the image the Kindle downloads
 curl -s http://localhost:8080/refresh      # force a re-render
