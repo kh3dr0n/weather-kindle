@@ -1,0 +1,16 @@
+services:
+  weather-kindle:
+    build: .
+    container_name: weather-kindle
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      WU_URL: https://www.wunderground.com/forecast/de/munich
+      SELECTOR: .ten-day-frame
+      REFRESH_MINUTES: "30"
+      ROTATE: "90"        # 0 = keep landscape graph unrotated
+      TZ: Europe/Berlin
+    volumes:
+      - ./data:/data
+    ipc: host             # Chromium needs more shared memory than Docker's default
